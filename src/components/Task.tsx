@@ -1,6 +1,6 @@
 import { useAppDispatch } from '@/redux/hooks'
 import { TTask, deleteTask, editTask, toggleTaskStatus } from '@/redux/todos/tasksSlice'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { Button } from './ui/button'
 import { Checkbox } from './ui/checkbox'
 import { Input } from './ui/input'
@@ -13,6 +13,7 @@ export default function Task({ task }: TTaskProp) {
     const [activeEdit, setActiveEdit] = useState<boolean>(false)
     const [editTaskText, setEditTaskText] = useState<string>(task.task)
     const dispatch = useAppDispatch()
+    const taskInputRef = useRef<HTMLInputElement>(null)
 
     return (
         <div className='flex w-full items-center justify-between rounded-md bg-muted px-2 py-2'>
@@ -23,6 +24,7 @@ export default function Task({ task }: TTaskProp) {
                 />
                 <Input
                     type='text'
+                    ref={taskInputRef}
                     value={editTaskText}
                     className='w-3/4'
                     onChange={(e) => setEditTaskText(e.target.value)}
@@ -41,7 +43,13 @@ export default function Task({ task }: TTaskProp) {
                         Save
                     </Button>
                 ) : (
-                    <Button size='sm' variant='outline' onClick={() => setActiveEdit(true)}>
+                    <Button
+                        size='sm'
+                        variant='outline'
+                        onClick={() => {
+                            setActiveEdit(true)
+                            taskInputRef.current?.focus()
+                        }}>
                         Edit
                     </Button>
                 )}
