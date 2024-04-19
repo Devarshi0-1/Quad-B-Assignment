@@ -37,7 +37,8 @@ To install <Actionable>, follow these steps:
 
 To use Actionable, follow these steps:
 
-4. Run the project in development mode:
+1. Run the project in development mode:
+
     ```
     npm run dev
     ```
