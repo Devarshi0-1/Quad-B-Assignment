@@ -22,19 +22,27 @@ To install <Actionable>, follow these steps:
 2. Navigate into the project directory:
 
     ```
-    cd <project_name>
+    cd Quad-B-Assignment
     ```
 
 3. Install the dependencies:
     ```
     npm install
     ```
+    or
+     ```
+    pnpm i
+    ```
 
-## Using <project_name>
+## Using Actionable
 
-To use <project_name>, follow these steps:
+To use Actionable, follow these steps:
 
-1. Run the project in development mode:
+Run the project in development mode:
     ```
     npm run dev
+    ```
+    or
+    ```
+    pnpm dev
     ```
